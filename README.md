@@ -310,7 +310,7 @@ Example- Synthesis and Simulation Mismatch because of Blocking Statements
               
 Verilog Code
               
-![image](https://user-images.githubusercontent.com/86367130/123845985-76d20680-d932-11eb-9553-cb76033c1664.png
+![image](https://user-images.githubusercontent.com/86367130/123845985-76d20680-d932-11eb-9553-cb76033c1664.png)
               
   At the pointer, we can see that past values a and b are considered and anded with c to give the present value of d. It seems as if a and b are flopped
               
@@ -326,8 +326,194 @@ So, it is advisable to use Non-Blocking Statements.
 
 # If, Case, For Loop and for generate
  
-  
-
-
-
+ If-else statement-It is mainly used for priority Logic
+              
+Cautions with If-
+              
+An incomplete If statement results in an Inferred Latch. Suppose we do not give else statement in if construct, then the synthesizer will synthesize a latch which will infer to the past value of output in absence of an else block.
+We should not have incomplete if statements unless it is intended.
+Incomplete If’s should be avoided especially in combinational circuits.
+              
+Case statement-
+Caveats-
+1.Incomplete case will also lead to Inferred Latches. To avoid this, we should add a default case in the code.
+2.Partial Assignments In case- This will create an Inferred Latch. So, we should assign all the outputs in all the segments of case.
+Comparison in If-else and case
+If-else has a clear priority. Only one segment will execute either if, if -else or else whereas in case if more than one condition matches then it will execute both the condition in the order they appear. So, we should not have overlapping case statements.
+              
+For Loop-
+• Used inside always block
+• Evaluating expressions
+• Not for instantiating hardware
+              
+Generate For –
+• Always used outside the always block.
+• Used for instantiating a hardware multiple time
+              
+Lab cases
+              
+1.Incomplete If construct:
+              
+The code is without else.
+              
+![image](https://user-images.githubusercontent.com/86367130/123846623-3c1c9e00-d933-11eb-9c42-f6aa0ff66621.png)
  
+Y follows i1 if i0 is high but latching onto its previous value if i0 is low, thereby resulting in an Inferred Latch
+
+![image](https://user-images.githubusercontent.com/86367130/123846686-4f2f6e00-d933-11eb-9211-5f47eea37643.png)
+
+ Clearly, a D-Latch in inferred in synthesis
+
+![image](https://user-images.githubusercontent.com/86367130/123846762-65d5c500-d933-11eb-856a-51d052c76d7b.png)
+
+I2 is not used and y is latched to i1 without creating a Mux.
+  
+![image](https://user-images.githubusercontent.com/86367130/123846833-7ab25880-d933-11eb-8462-3f492a61167e.png)
+
+2. Second Case of Incomplete -If:
+              
+Verilog Code- If is without else block
+              
+![image](https://user-images.githubusercontent.com/86367130/123846921-90278280-d933-11eb-89e5-9a784ca93e56.png)
+
+When i0 if high y follows i1 otherwise it checks for i2 and when i2 and i3 both are y latches to its previous value.
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123846981-a33a5280-d933-11eb-88d5-a3f02f66548e.png)
+
+ Clearly, it is inferring a latch
+
+![image](https://user-images.githubusercontent.com/86367130/123847055-bbaa6d00-d933-11eb-8d7e-2af4f841b12e.png)
+
+So, a nor is synthesized for the logic of the enable of D-Latch. If both i0 and i2 are low then the latch goes high. A 2:1 mux is present with i0 as select which if high then y is i1 else i3. 
+
+  ![image](https://user-images.githubusercontent.com/86367130/123847129-d11f9700-d933-11eb-953b-f154e6b03cd6.png)
+              
+Hence, resulting in an Inferred Latch in case of incomplete if statement.
+              
+3.Case Statements-Incomplete Case
+              
+If sel is 00 , y is i0
+If sel is 01 , y is i1 else y will latch.
+
+![image](https://user-images.githubusercontent.com/86367130/123847191-ed233880-d933-11eb-9989-81a445493930.png)
+              
+When sel is 00 y follows i0, when 11 if follows i1 and when it is 10 or 11 then y is latching to its previous value.
+              
+![image](https://user-images.githubusercontent.com/86367130/123847249-00ce9f00-d934-11eb-8540-e8c23a1882c7.png)
+              
+ Gates Synthesized
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123847308-15ab3280-d934-11eb-991e-34ae851f96ad.png)
+
+ So, after synthesis a D-Latch is inferred in the design because o the absence of else block.
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123847402-2eb3e380-d934-11eb-956b-9a6c4f3a92e5.png)
+             
+4.Complete Case with No Inferred Latch
+              
+![image](https://user-images.githubusercontent.com/86367130/123847490-44c1a400-d934-11eb-8d77-2d85dc2d21e9.png)
+              
+When sel is 00 y is i0 , when 01 y is i1 else y is i2.Hence, no latching
+              
+![image](https://user-images.githubusercontent.com/86367130/123847536-530fc000-d934-11eb-8195-791c9e5c492d.png)
+
+Clearly, no latching this time all gate synthesized are combinational logic
+              
+![image](https://user-images.githubusercontent.com/86367130/123847601-66229000-d934-11eb-82cb-1024e4ff8e81.png)
+
+Design:
+              
+![image](https://user-images.githubusercontent.com/86367130/123847659-776b9c80-d934-11eb-8f47-0b266408d912.png)
+
+Hence, no latch is inferred.
+              
+5.Partial-Assignments
+              
+![image](https://user-images.githubusercontent.com/86367130/123847749-92d6a780-d934-11eb-8536-4217e4e8225d.png)
+              
+When For x, when sel is 00, then x is i2 otherwise it is i1 and latched to its previous value for nand of sel0 and not(sel1).
+              
+![image](https://user-images.githubusercontent.com/86367130/123847863-ac77ef00-d934-11eb-8e07-71b0b6a0e77b.png)
+
+ X in inferred with a Latch because Partial assignments
+              
+6.Overlapping case
+              
+![image](https://user-images.githubusercontent.com/86367130/123847959-c580a000-d934-11eb-8ca9-e725b48a34f9.png)
+
+Waveform:
+When sel is 11, it is latching to an output of 1 as it gets confused with the value.
+              
+![image](https://user-images.githubusercontent.com/86367130/123847998-d29d8f00-d934-11eb-9365-af92060e62f1.png)
+
+Design:
+
+A mux_4 is created
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123848125-f8c32f00-d934-11eb-9b9c-b2fcbc425385.png)
+
+Gtkwave of Netlist
+Here y is referring to i3 when sel is 11
+              
+![image](https://user-images.githubusercontent.com/86367130/123848185-07a9e180-d935-11eb-98f0-cf8d235ccb7a.png)
+              
+So, there is mismatch between synthesis and simulation wave.
+              
+Lab of For and For Generate
+              
+1. A 4:1 Mux using For
+Code-Here for loop is used to create a 4:1 mux . It evaluates
+              
+![image](https://user-images.githubusercontent.com/86367130/123848267-27d9a080-d935-11eb-83a6-4d999cd6304d.png)
+
+Gtkwave
+              
+So, when sel is 00 y is i0
+sel is 10 y is i1
+sel is 10 y is i2
+sel is 11 y is i3              
+              
+![image](https://user-images.githubusercontent.com/86367130/123848315-39bb4380-d935-11eb-8cca-fa92cf222770.png)
+
+Design:
+Here a 4:1 Mux is synthesized with 2 select lines and an extra D Latch because of the else block in the code.
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123848381-4b9ce680-d935-11eb-9871-717a44b12c72.png)
+
+The waveform of the netlist matches with the waveform of RTL code.
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123848450-5ce5f300-d935-11eb-830e-d63109063f74.png)
+
+ Hence, for loop generates a 4:1 mux or a mux with higher inputs and reduces the effort of writing many lines of code.
+No simulation and synthesis mismatch is found.
+              
+2. Demux Using For Construct             
+              
+![image](https://user-images.githubusercontent.com/86367130/123848518-71c28680-d935-11eb-8a57-6cc42eeb0bcc.png)
+
+Demux_case
+              
+![image](https://user-images.githubusercontent.com/86367130/123848608-8bfc6480-d935-11eb-9bc0-a9de9900122f.png)
+
+![image](https://user-images.githubusercontent.com/86367130/123848629-9159af00-d935-11eb-885f-4dccccf007a0.png)
+
+Waveform of demux with for loop
+              
+![image](https://user-images.githubusercontent.com/86367130/123848708-a5051580-d935-11eb-86d0-c73f3d133c7e.png)
+              
+3.Ripple Carry Adder using For Generate
+              
+![image](https://user-images.githubusercontent.com/86367130/123848781-b8b07c00-d935-11eb-854d-c712bae1fcdf.png)
+
+ Gtkwave Waveform
+              
+ ![image](https://user-images.githubusercontent.com/86367130/123848841-c82fc500-d935-11eb-9e96-8a18dc26744d.png)
+             
+Design of Ripple Carry Adder:
+              
+8 instances of Full-Adder have been created in Ripple Carry Adder using for generate.
+              
+![image](https://user-images.githubusercontent.com/86367130/123848930-e1387600-d935-11eb-869b-e46ab03699f0.png)
+
+              
+

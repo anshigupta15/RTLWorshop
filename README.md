@@ -6,13 +6,13 @@
 
  + Day-1-Introduction to RTL Design And Synthesis
 
-Day-2 Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
+ + Day-2 Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
 
-Day-3 Introduction To Ligic Optimization
+ + Day-3 Introduction To Ligic Optimization
 
-Day-4 GLS, Blocking vs Non-blocking and Synthesis Simulation Mismatch
+ + Day-4 GLS, Blocking vs Non-blocking and Synthesis Simulation Mismatch
 
-Day-5 If, Case, For Loop and for generate
+ + Day-5 If, Case, For Loop and for generate
 
 
 

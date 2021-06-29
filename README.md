@@ -14,7 +14,7 @@
 
  + If, Case, For Loop and for generate
 
-<style>H1{color:Blue;}</style>
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
 
 # Introduction to RTL Design And Synthesis
 

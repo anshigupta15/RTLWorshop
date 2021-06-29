@@ -153,7 +153,7 @@ Y is optimized to 1 without using any Gate
  
 Lab Examples of DFF Flip-Flops
  
-1. Dff_const1
+Example-1
  
  ![image](https://user-images.githubusercontent.com/86367130/123842514-7f284280-d92e-11eb-83ca-060915d0928f.png)
  
@@ -165,7 +165,7 @@ In dff_const_1 design Dff is set to 0 at reset else high
  
 ![image](https://user-images.githubusercontent.com/86367130/123842693-b26ad180-d92e-11eb-88e5-82b63a58d348.png)
  
- 2.Dff_const2
+ Example-2
  
 The output of the D-FF is always set 1 irrespective of reset or clock
  
@@ -176,7 +176,7 @@ Because, library is having active low reset so it is inferring an inverter in or
  
  ![image](https://user-images.githubusercontent.com/86367130/123842954-f65dd680-d92e-11eb-8692-95eeb00ae3a6.png)
  
-3.Dff_const3
+Example-3
  
  ![image](https://user-images.githubusercontent.com/86367130/123843031-0d9cc400-d92f-11eb-9e1f-398ac03906fb.png)
  
@@ -186,7 +186,7 @@ Because, library is having active low reset so it is inferring an inverter in or
  
  ![image](https://user-images.githubusercontent.com/86367130/123843110-27d6a200-d92f-11eb-976c-ed66ea2361c0.png)
 
-4.Dff_const4
+Example-4
  
  ![image](https://user-images.githubusercontent.com/86367130/123843211-46d53400-d92f-11eb-9bed-3f715ab6599a.png)
 
@@ -196,7 +196,7 @@ Because, library is having active low reset so it is inferring an inverter in or
  
 When reset q and q1 are1 else q1 is 1 and q is assigned q1. So, both the flip-flops are always one
  
-5.Dff_const5.v
+ Example-5
 
  Code
  ![image](https://user-images.githubusercontent.com/86367130/123843383-7b48f000-d92f-11eb-8763-331f15bf06f0.png)

@@ -2,7 +2,7 @@
 # Workshop On RTL Design Using Verilog With Sky 130 Technology
 ![image](https://user-images.githubusercontent.com/86367130/123824988-22239100-d91c-11eb-95ae-bf2f17e4e701.png)
 
-# ! [#c5f015] Contents
+# Contents
 
  + Day-1-Introduction to RTL Design And Synthesis
 
@@ -140,11 +140,105 @@ Instead of realising 2 gates, one single gate is realised
 ![image](https://user-images.githubusercontent.com/86367130/123831405-eb507980-d921-11eb-986d-292589c3708f.png)
   
   Ab+c is realised and got optimised as shown above.
+ 
+ 6.Mulitple Module Optimization-2
+
+Y is optimized to 1 without using any Gate
+ 
+![image](https://user-images.githubusercontent.com/86367130/123842276-383a4d00-d92e-11eb-877f-06155592fad1.png)
+ 
+![image](https://user-images.githubusercontent.com/86367130/123842358-51db9480-d92e-11eb-8911-abb2dea8dbae.png)
+ 
+ Sequential Optimization- Sequential Constant Propagation
+ 
+Lab Examples of DFF Flip-Flops
+ 
+1. Dff_const1
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123842514-7f284280-d92e-11eb-83ca-060915d0928f.png)
+ 
+In dff_const_1 design Dff is set to 0 at reset else high
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123842598-936c3f80-d92e-11eb-8837-6d27e390f5c6.png)
+ 
+ Design: A dff is realised
+ 
+![image](https://user-images.githubusercontent.com/86367130/123842693-b26ad180-d92e-11eb-88e5-82b63a58d348.png)
+ 
+ 2.Dff_const2
+ 
+The output of the D-FF is always set 1 irrespective of reset or clock
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123842832-d9290800-d92e-11eb-8a81-986968e6cfbd.png)
+ 
+After Synthesizing
+Because, library is having active low reset so it is inferring an inverter in order to have reset as active high. No flip-flop is realised q is assigned the value of 1
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123842954-f65dd680-d92e-11eb-8692-95eeb00ae3a6.png)
+ 
+3.Dff_const3
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843031-0d9cc400-d92f-11eb-9e1f-398ac03906fb.png)
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843067-19888600-d92f-11eb-873e-66a589c8fc0f.png)
+ 
+ 2 Flip-flops are realised with q1 given as input 1 and q is assigned q1
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843110-27d6a200-d92f-11eb-976c-ed66ea2361c0.png)
+
+4.Dff_const4
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843211-46d53400-d92f-11eb-9bed-3f715ab6599a.png)
+
+ ![image](https://user-images.githubusercontent.com/86367130/123843234-4e94d880-d92f-11eb-9025-593bdcfef029.png)
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843264-5785aa00-d92f-11eb-93e5-b09223c1284b.png)
+ 
+When reset q and q1 are1 else q1 is 1 and q is assigned q1. So, both the flip-flops are always one
+ 
+5.Dff_const5.v
+
+ Code
+ ![image](https://user-images.githubusercontent.com/86367130/123843383-7b48f000-d92f-11eb-8763-331f15bf06f0.png)
+ 
+ Waveform
+ ![image](https://user-images.githubusercontent.com/86367130/123843449-88fe7580-d92f-11eb-8c7f-f685bf987577.png)
+ 
+ Design
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843478-9287dd80-d92f-11eb-8d48-87fbf924e663.png)
+ 
+ Unused Output Optimization
+ 
+ Example-1
+ 
+ Code
+ ![image](https://user-images.githubusercontent.com/86367130/123843558-aaf7f800-d92f-11eb-89a2-b722b339862b.png)
+ 
+ Gates Used
+![image](https://user-images.githubusercontent.com/86367130/123843581-b2b79c80-d92f-11eb-894c-6722bf34d0df.png)
+ 
+ Design
+ ![image](https://user-images.githubusercontent.com/86367130/123843659-c95df380-d92f-11eb-8f82-731a363d08d0.png)
+ 
+ Toggle Flip-Flop is realised as output is just last bit of the count which keeps toggling on every clock cycle
+ 
+Example-2
+ 
+Code-
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843880-fca08280-d92f-11eb-94be-f98465280637.png)
+
+Design Realised
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123843920-06c28100-d930-11eb-9991-aaa12ff19e2e.png)
+ 
+ 
 
 
 
 
-  
+
 # Day-4
   
 # Day-5 

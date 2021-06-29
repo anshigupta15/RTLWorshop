@@ -4,7 +4,7 @@
 
 # Contents
 
- '- ![#c5f015] Introduction to RTL Design And Synthesis'
+ - ![#c5f015] Introduction to RTL Design And Synthesis
 
  + Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
 

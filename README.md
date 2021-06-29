@@ -14,7 +14,7 @@
 
  + If, Case, For Loop and for generate
 
-- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=jjh+) `#c5f015`
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=If, Case, For Loop and for generate+) 
 
 # Introduction to RTL Design And Synthesis
 

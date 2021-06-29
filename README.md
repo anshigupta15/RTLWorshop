@@ -139,13 +139,32 @@ Exaample-1 Multiplication*2
  
  ![image](https://user-images.githubusercontent.com/86367130/123850751-029a6180-d938-11eb-8d53-a1462f8aa1bd.png)
 
+ Zero memories, processes and no cells to be synthesized
+After ABC pass, it shows there nothing to map
  
+ ![image](https://user-images.githubusercontent.com/86367130/123850893-2e1d4c00-d938-11eb-8744-00cba4b596b7.png)
 
+ Here no gate is synthesized. Only 2-input a is converted to y by appending a zero in the end.
  
+ ![image](https://user-images.githubusercontent.com/86367130/123850955-40978580-d938-11eb-902c-a5dfb1809556.png)
+
+ ![image](https://user-images.githubusercontent.com/86367130/123850996-50af6500-d938-11eb-9457-d259c660482b.png)
+
+ Hence, no hardware required for Multiplication of a number by 2
  
+ Example-2 Multiply by 9
  
+ ![image](https://user-images.githubusercontent.com/86367130/123851113-750b4180-d938-11eb-8e9e-347af97721a4.png)
+
+ ![image](https://user-images.githubusercontent.com/86367130/123851137-7d637c80-d938-11eb-8da6-44b44794016d.png)
+
+ Show
  
+ ![image](https://user-images.githubusercontent.com/86367130/123851189-881e1180-d938-11eb-8ee4-62b9c2db92a4.png)
+
+ So, 2 a [2:0] variable mapped to the 6 bits of y
  
+So,we don’t need any hardware just by rewiring the signals we can implement the logic
 
 
 # Introduction To Logic Optimization

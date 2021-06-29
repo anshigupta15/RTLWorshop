@@ -86,29 +86,66 @@ Otherwise, if it is taking values both 1 and 0, then it is not in the state of S
 2. Advanced
   
 • State Optimization-Optimization of Unused States
+  
 • Retiming-It is done by slicing or Logic Partitioning to balance the timing across the circuit in order to get better performance with increased frequency.
+  
 • Sequential Logic Cloning-It causes multiple instances of input flip flop with Large Positive Slack.
   
 Lab Examples of Optimization
   
 1. Logic Optimized to AND Gate
+  
 This is an example of Boolean Logic Optimization.
-  ![image](https://user-images.githubusercontent.com/86367130/123829342-028e6780-d920-11eb-96ab-266ac06eb59c.png)
+![image](https://user-images.githubusercontent.com/86367130/123829342-028e6780-d920-11eb-96ab-266ac06eb59c.png)
   
 Command to do Constant Propagation and Optimization is: opt_clean -purge
-  ![image](https://user-images.githubusercontent.com/86367130/123829518-26ea4400-d920-11eb-97de-a1019881ea82.png)
+![image](https://user-images.githubusercontent.com/86367130/123829518-26ea4400-d920-11eb-97de-a1019881ea82.png)
 
-  A 2-input AND gate is synthesized after Logic Optimization
+A 2-input AND gate is synthesized after Logic Optimization
   
 2.Optimization to OR Gate
   
-  Verilog Code
-  ![image](https://user-images.githubusercontent.com/86367130/123829591-38335080-d920-11eb-8252-7c0b03768fc8.png)
-  
-  ![image](https://user-images.githubusercontent.com/86367130/123829664-45e8d600-d920-11eb-9ca0-02231edacb5b.png)
-
-
 The below logic gets optimized to 2-input OR Gate
+![image](https://user-images.githubusercontent.com/86367130/123829591-38335080-d920-11eb-8252-7c0b03768fc8.png)
+  
+![image](https://user-images.githubusercontent.com/86367130/123829664-45e8d600-d920-11eb-9ca0-02231edacb5b.png)
+
+OR Gate Design
+![image](https://user-images.githubusercontent.com/86367130/123830946-6ebd9b00-d921-11eb-94f6-af1f33df231d.png)
+
+3.Optimization to 3-input AND Gate
+
+The given logic gets optimized to 3-input And Gate
+![image](https://user-images.githubusercontent.com/86367130/123831034-86951f00-d921-11eb-833a-60dcc121c9ac.png)
+  
+Design
+![image](https://user-images.githubusercontent.com/86367130/123831071-8f85f080-d921-11eb-97cd-a33ef57766f1.png)
+  
+4.Optimization to 2-Input X-OR Gate
+
+  ![image](https://user-images.githubusercontent.com/86367130/123831182-b04e4600-d921-11eb-95f6-6f70e404e8be.png)
+  
+![image](https://user-images.githubusercontent.com/86367130/123831204-b512fa00-d921-11eb-82ed-7d2070aaf1e6.png)
+  
+Instead of realising 2 Multiplexer, one single XNOR gate is realised.
+  
+5.Multiple Module Optimization
+  
+Instead of realising 2 gates, one single gate is realised
+  
+  Code
+  
+![image](https://user-images.githubusercontent.com/86367130/123831357-de338a80-d921-11eb-9fbb-3e4cbbc25ccf.png)
+  
+  Design
+
+![image](https://user-images.githubusercontent.com/86367130/123831405-eb507980-d921-11eb-986d-292589c3708f.png)
+  
+  Ab+c is realised and got optimised as shown above.
+
+
+
+
   
 # Day-4
   

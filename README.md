@@ -4,10 +4,7 @@
 
 # Contents
 
-Day-1-Introduction to RTL Design And Synthesis
-1.<div class="text-white bg-blue mb-2">
-  dsd
-</div>
+ + Day-1-Introduction to RTL Design And Synthesis
 
 Day-2 Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
 

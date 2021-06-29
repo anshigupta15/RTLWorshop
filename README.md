@@ -63,7 +63,57 @@ This is the synthesizer used to convert RTL to Netlist
 ![image](https://user-images.githubusercontent.com/86367130/123828122-d45c5800-d91e-11eb-8066-335d022a8ea4.png)
   
   In order to verify the netlist with simulation results we give the netlist file and the same test bench to the iverilog simulator.
+  
 
+# Day-2
+
+# Day-3 Introduction To Logic Optimization
+  
+It is mainly done to reduce the logic to the most optimized design. Most optimized design will be in terms of Area and Power.
+Techniques of Optimization for Combinational Logic
+  
+1.Constant Propagation-Direct Optimization technique
+2.Boolean Logic Optimization-Techniques such as K-Map and Quine Mckluskey
+  
+Techniques of Optimization for Sequential Logic
+  
+1. Basic
+• Sequential Constant Propagation
+Whenever the Flip-Flop output is constant irrespective of clock and reset/set signals, then it is in the state of Sequential Constant.
+This state of the Flip-Flop can be further optimized.
+Otherwise, if it is taking values both 1 and 0, then it is not in the state of Sequential Constant.
+
+2. Advanced
+  
+• State Optimization-Optimization of Unused States
+• Retiming-It is done by slicing or Logic Partitioning to balance the timing across the circuit in order to get better performance with increased frequency.
+• Sequential Logic Cloning-It causes multiple instances of input flip flop with Large Positive Slack.
+  
+Lab Examples of Optimization
+  
+1. Logic Optimized to AND Gate
+This is an example of Boolean Logic Optimization.
+  ![image](https://user-images.githubusercontent.com/86367130/123829342-028e6780-d920-11eb-96ab-266ac06eb59c.png)
+  
+Command to do Constant Propagation and Optimization is: opt_clean -purge
+  ![image](https://user-images.githubusercontent.com/86367130/123829518-26ea4400-d920-11eb-97de-a1019881ea82.png)
+
+  A 2-input AND gate is synthesized after Logic Optimization
+  
+2.Optimization to OR Gate
+  
+  Verilog Code
+  ![image](https://user-images.githubusercontent.com/86367130/123829591-38335080-d920-11eb-8252-7c0b03768fc8.png)
+  
+  ![image](https://user-images.githubusercontent.com/86367130/123829664-45e8d600-d920-11eb-9ca0-02231edacb5b.png)
+
+
+The below logic gets optimized to 2-input OR Gate
+  
+# Day-4
+  
+# Day-5 
+ 
   
 
 

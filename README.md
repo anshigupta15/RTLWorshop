@@ -4,7 +4,7 @@
 
 # Contents
 
- + Introduction to RTL Design And Synthesis
+ '- ![#c5f015] Introduction to RTL Design And Synthesis'
 
  + Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
 
@@ -14,7 +14,7 @@
 
  + If, Case, For Loop and for generate
 
-- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
+(https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
 
 
 

@@ -63,7 +63,90 @@ This is the synthesizer used to convert RTL to Netlist
   In order to verify the netlist with simulation results we give the netlist file and the same test bench to the iverilog simulator.
   
 
-# Day-2
+# Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
+
+ Hierarchy Is Preserved
+ 
+ Code
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123849745-c9adbd00-d936-11eb-98e1-bf21ecc28a2e.png)
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123849712-c0bceb80-d936-11eb-9cad-fd41c20a619f.png)
+ 
+ Modules are instantiated by u1 and u2
+ 
+Writing Netlist for Multiple Modules Hierarchy
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123849889-f5c93e00-d936-11eb-9f13-0f0aa250cb67.png)
+ 
+ We can directly see the structure completely when we flatten -
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123849951-0b3e6800-d937-11eb-9e2d-4148cf639b14.png)
+
+ Sub-Module
+ 
+Module Level Synthesis is preferred when we have multiple instances of same module or Using Divide and Conquer Approach in massive designs.
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850082-3628bc00-d937-11eb-9992-1eed18fa239d.png)
+
+ Using Synth -top command we can control the module to be synthesized.
+ 
+Various Flop Coding Styles and Optimization
+ 
+ Example-1 DFF Asynchronous Reset
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850176-52c4f400-d937-11eb-9238-d03b6cf8b4b5.png)
+
+ Waveform of Dff Asynchronous Reset-Q follows d only when async_reset is low otherwise low
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850258-6bcda500-d937-11eb-8ff1-31fc92b2c02d.png)
+
+ Synthesize
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850303-7d16b180-d937-11eb-9980-827736e3380c.png)
+
+ ![image](https://user-images.githubusercontent.com/86367130/123850325-830c9280-d937-11eb-9984-5d8869fb9b18.png)
+
+Example-2  Asynchronous Set DFF
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850409-a1728e00-d937-11eb-91a8-9b1df84215ba.png)
+
+ GtkWave Output
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850455-ac2d2300-d937-11eb-81df-84e411de1020.png)
+
+ Synthesizer
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850486-b7804e80-d937-11eb-98b6-68fdb8d4eb10.png)
+
+ Example-3 Synchronous Reset
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850529-c404a700-d937-11eb-829a-75dc4156905b.png)
+
+ GtkWave
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850554-cebf3c00-d937-11eb-9558-dd4dd6b7e5b4.png)
+
+ Design
+![image](https://user-images.githubusercontent.com/86367130/123850576-d67ee080-d937-11eb-90bf-af4e7525c0f8.png)
+ 
+ 
+Optimization
+ 
+Exaample-1 Multiplication*2 
+ 
+ Code
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123850751-029a6180-d938-11eb-8d53-a1462f8aa1bd.png)
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
 
 # Introduction To Logic Optimization
   

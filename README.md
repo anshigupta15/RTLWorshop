@@ -4,19 +4,19 @@
 
 # Contents
 
- + Day-1-Introduction to RTL Design And Synthesis
+ + Introduction to RTL Design And Synthesis
 
- + Day-2 Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
+ + Hierarchical Vs Flat Synthesis and Efficient Flip-Flop Coding Styles
 
- + Day-3 Introduction To Ligic Optimization
+ + Introduction To Ligic Optimization
 
- + Day-4 GLS, Blocking vs Non-blocking and Synthesis Simulation Mismatch
+ + GLS, Blocking vs Non-blocking and Synthesis Simulation Mismatch
 
- + Day-5 If, Case, For Loop and for generate
+ + If, Case, For Loop and for generate
 
 
 
-# Day-1
+# Introduction to RTL Design And Synthesis
 
 
 RTL Design- register-transfer level (RTL) is a design abstraction which models a synchronous digital circuit in terms of the flow of digital signals (data) between hardware registers, and the logical operations performed on those signals.
@@ -65,7 +65,7 @@ This is the synthesizer used to convert RTL to Netlist
 
 # Day-2
 
-# Day-3 Introduction To Logic Optimization
+# Introduction To Logic Optimization
   
 It is mainly done to reduce the logic to the most optimized design. Most optimized design will be in terms of Area and Power.
 Techniques of Optimization for Combinational Logic
@@ -234,14 +234,97 @@ Design Realised
  ![image](https://user-images.githubusercontent.com/86367130/123843920-06c28100-d930-11eb-9991-aaa12ff19e2e.png)
  
  
+# GLS, Blocking vs Non-blocking and Synthesis Simulation Mismatch
+ 
+ Gate Level Simulation (GLS)
+ 
+What is GLS?
+ 
+Running the test bench with Netlist as Design Under Test. As Netlist is logically same as RTL Code same Test Bench will align with the design. So, we plug the Netlist in place of RTL code and run the simulation.
+ 
+Why?
+ 
+In order to verify the logical correctness of the design after synthesis we perform GLS. As design might not be synthesizing correct logic. GLS also ensured timing design is met for which GLS needs to be run with delay annotation.
+ 
+GLS Flow
+ 
+ ![image](https://user-images.githubusercontent.com/86367130/123844790-12fb0e00-d931-11eb-8db6-713408688ba1.png)
+ 
+Gate Level Verilog Models contain information regarding gates in the netlist. These models can be either Timing or Functional Aware. If only Functional aware then we can validate only the functionality and if Timing aware then we can validate both Functionality and Timing of the gates.
+ 
+Synthesis Simulation Mismatch
+ 
+Synthesis and Simulation mismatch can occur due to the following:
+ 
+• Missing Sensitivity List
+ 
+• Blocking V/s Non-Blocking Assignment
+Inside always block:
+= Blocking assignment statements are executed one after the another in the order in which they are written.
+<= Non-Blocking assignment statements executes all RHS statements parallelly and assign then to the LHS
+Incorrect use of Blocking statements to create sequential logic can result in Simulation and Synthesis Mismatch, so it is always recommended to use NON-Blocking Assignment statements for Sequential Logic.
+              
+• Non-Standard Verilog Coding
+              
+Hence, we should check the behaviour of the circuit with GLS
+              
+Lab Examples
+              
+1.Ternary_Operator_mux
+2.Bad_mux
+3.Good_mux
+              
+Following is the Verilog Code:
+              
+![image](https://user-images.githubusercontent.com/86367130/123845189-843ac100-d931-11eb-8e62-8e8ab28067c5.png)
+              
+1.Ternary_Operator_mux
+              
+The below waveform after simulation clearly indicates the behaviour of 2:1 Mux.  
+              
+![image](https://user-images.githubusercontent.com/86367130/123845433-cd8b1080-d931-11eb-9300-ed2abb298320.png)
 
+![image](https://user-images.githubusercontent.com/86367130/123845346-b4825f80-d931-11eb-96e0-a7daeddb1c16.png)
+              
+Hence, a 2:1 MUX is synthesized.
 
+![image](https://user-images.githubusercontent.com/86367130/123845546-ee536600-d931-11eb-8e2d-5811eb5f8fff.png)
 
+![image](https://user-images.githubusercontent.com/86367130/123845618-0925da80-d932-11eb-9900-57553e4b39cd.png)
 
+Clearly the waveform after simulation and synthesis matches.
+              
+2.Bad_mux.v
+              
+Simulation Waveform-Here y is not following the changes in i1 or i0, only changing its value at the rising edge of sel.
 
-# Day-4
-  
-# Day-5 
+![image](https://user-images.githubusercontent.com/86367130/123845794-3e322d00-d932-11eb-8e47-efc2cd9c472a.png)
+
+Waveform after Synthesis Using Netlist-Here y is following the changing in i1 and i0.
+
+![image](https://user-images.githubusercontent.com/86367130/123845864-530ec080-d932-11eb-910b-7969f442713c.png)
+
+Both the waveforms obtained after simulation and synthesis are different, this clearly indicated Simulation and Synthesis Mismatch
+              
+Example- Synthesis and Simulation Mismatch because of Blocking Statements
+              
+Verilog Code
+              
+![image](https://user-images.githubusercontent.com/86367130/123845985-76d20680-d932-11eb-9553-cb76033c1664.png
+              
+  At the pointer, we can see that past values a and b are considered and anded with c to give the present value of d. It seems as if a and b are flopped
+              
+![image](https://user-images.githubusercontent.com/86367130/123846140-9c5f1000-d932-11eb-9d24-9839b2048885.png)
+
+After Synthesis-y is evaluating at present value of a and b.
+
+![image](https://user-images.githubusercontent.com/86367130/123846217-b6005780-d932-11eb-8608-4bd5c0ca5e29.png)
+              
+So, this is clearly simulation and synthesis mismatch because of blocking statements
+              
+So, it is advisable to use Non-Blocking Statements.
+
+# If, Case, For Loop and for generate
  
   
 

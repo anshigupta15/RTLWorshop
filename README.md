@@ -618,6 +618,7 @@ Design of Ripple Carry Adder:
               
 # Acknowledgement
 
-]Kunal Ghosh
- Shon Taware
+Kunal Ghosh
+              
+Shon Taware
 

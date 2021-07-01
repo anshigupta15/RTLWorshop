@@ -616,4 +616,8 @@ Design of Ripple Carry Adder:
 ![image](https://user-images.githubusercontent.com/86367130/123848930-e1387600-d935-11eb-869b-e46ab03699f0.png)
 
               
+# Acknowledgement
+
+]Kunal Ghosh
+ Shon Taware
 
